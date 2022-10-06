@@ -169,9 +169,11 @@ function correctAnswer() {
     }
 }
 
-// function submitInitials() {
+function submitInitials() {
+        var initials = document.getElementById("initials-list").value;
+        console.log(initials);
 
-// }
+ }
 
 
 
