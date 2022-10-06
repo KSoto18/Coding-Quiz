@@ -2,31 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Coding Quiz</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Coding Quiz</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
-  
-  <body>
-    <div class = " "><a href="./highscores.html">View Scores!</a></div>
-    <div class = " ">Time Remaining: </div>
 
-    <section>
-        <h1>Coding Quiz!</h1>
-        <p>This quiz includes basic coding questions. Please awnser the questions within the given time. Any incorrect awnsers will result in a time penalty which will deduct your time by 10 seconds.</p>
+<body>
+  <header>
+    <div class=" "><a href="./highscores.html">View Scores!</a></div>
+    <div class=" ">Time Remaining: </div>
+  </header>
+
+
+
+  <div class="main" id="main_page">
+    <h1>Coding Quiz!</h1>
+    <p>This quiz includes basic coding questions. Please awnser the questions within the given time. Any incorrect
+      awnsers will result in a time penalty which will deduct your time by 10 seconds.</p>
+    <button id="startBtn" class="button">Start Quiz!</button>
+  </div>
+
+  <section class="questions_page" id="questions_page" hidden>
+    <div>
+      <!-- Questions go here -->
+      <h2 id="what_question">Question: </h2>
+      <!-- Choices go here -->
+      <ol>
+        <li><button class="choices_btn" id="awnser1"></button></li>
+        <li><button class="choices_btn" id="awnser2"></button></li>
+        <li><button class="choices_btn" id="awnser3"></button></li>
+        <li><button class="choices_btn" id="awnser4"></button></li>
+      </ol>
+    </div>
     </section>
+    
+ 
+
+  <section hidden>
+    <div class="main">
+      <h2>Finished!</h2>
+      <p>Your score is </p>
+
+      <p>
+        Initials: <input type="text" max="3">
+        <button>Submit</button>
+      </p>
+    </div>
+  </section>
 
 
 
-
-
-
-
-    <script src = "assets/js/questions.js"></script>
-    <script src = "assets/js/script.js"></script>
-  </body>
+  <script src="assets/js/questions.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
 
 
 
