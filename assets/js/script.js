@@ -83,8 +83,10 @@ var answer2 = document.getElementById("answer2");
 var answer3 = document.getElementById("answer3");
 var answer4 = document.getElementById("answer4");
 
+//buttons
 var choicesBtn = document.querySelector(".choices_btn");
 var nextBtn = document.getElementById("nextbtn");
+var submitBtn = document.getElementById("submit-btn");
 
 //timer variables
 var timeLeft = document.getElementById("timer");
@@ -106,13 +108,13 @@ function startQuiz() {
     startTimer();
 
     //if time runs out
-    setTimeout(function() {
+    setTimeout(function () {
         mainPage.style.display = "none";
         questionsPage.style.display = "none";
         finishPage.style.display = "block";
-        
-        }, 31000);
-    
+
+    }, 31000);
+
 
 }
 
@@ -135,10 +137,10 @@ function startTimer() {
     }, 1000);
 }
 
-
+//displays questions and answers
 function theQuestion(questionNumber) {
     for (var i = 0; i < preguntas.length; i++) {
-        
+
         whatQuestion.textContent = preguntas[i].question;
 
         answer1.textContent = preguntas[i].choices[0];
@@ -148,16 +150,17 @@ function theQuestion(questionNumber) {
 
         i = questionNumber;
         console.log("Question: #" + i);
-    } 
+    }
 }
 
-//check if the answer is correct
+//checks if the answers is correct
 function correctAnswer() {
-    //wrong answer
-    if (preguntas.choices !== preguntas.correct) {
+
+    //wrong answer deducts 10 seconds from timer
+    if (timeLeft >= 10) {
         timeLeft = secondsLeft - 10;
 
-        //correct answer
+    //correct answer adds 10 points
     } else if (preguntas.choices === preguntas.correct) {
         points = + 10;
         console.log("Points: " + points);
@@ -165,6 +168,12 @@ function correctAnswer() {
 
     }
 }
+
+// function submitInitials() {
+
+// }
+
+
 
 //start quiz button even listener
 startBtn.addEventListener("click", startQuiz);
@@ -174,3 +183,8 @@ choicesBtn.addEventListener("click", correctAnswer);
 
 //next button event listener
 nextBtn.addEventListener("click", theQuestion);
+
+//submit button even listener
+// submitBtn.addEventListener("click", function ());
+
+
