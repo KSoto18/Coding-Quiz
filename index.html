@@ -11,7 +11,9 @@
 
 <body>
   <header>
-    <div class=" "><a href="./highscores.html">View Scores!</a></div>
+    <!-- Highscores Page -->
+    <div id="view"><a href="./highscores.html">View Scores!</a></div>
+    <!-- Timer -->
     <div id="timer">Time Remaining: </div>
   </header>
 
@@ -24,24 +26,24 @@
     <button id="startBtn" class="button">Start Quiz!</button>
   </div>
 
-  <section class="questions_page" id="questions_page" hidden>
+  <section class="questions_page"  id="questions_page" hidden>
     <div>
-      <!-- Questions go here -->
+      <!-- Questions-->
       <h2 id="what_question">Question: </h2>
-      <!-- Choices go here -->
-      <ol>
+      <!-- Answers -->
+      <ul>
         <li><button class="choices_btn" id="answer1"></button></li>
         <li><button class="choices_btn" id="answer2"></button></li>
         <li><button class="choices_btn" id="answer3"></button></li>
         <li><button class="choices_btn" id="answer4"></button></li>
-      </ol>
+      </ul>
     </div>
     </section>
     
  
 
   <section hidden>
-    <div class="main">
+    <div id="finish_game" class="main">
       <h2>Finished!</h2>
       <p>Your score is </p>
 

@@ -64,19 +64,17 @@ const preguntas = [
 
 // variables to keep track of quiz state
 var currentQuestion = 0;
-var time = 10;
 var start = true;
-
 var whatQuestion = 0;
 var questionNumber = 0;
+var points = 0;
 
 
 // variables to reference DOM elements
 var mainPage = document.getElementById("main_page");
 var startBtn = document.getElementById("startBtn");
 var main = document.querySelector(".main");
-
-//question variables
+var finishPage = document.getElementById("finish_game");
 var questionsPage = document.getElementById("questions_page");
 var whatQuestion = document.querySelector("#what_question");
 
@@ -90,9 +88,10 @@ var choicesBtn = document.querySelector(".choices_btn");
 //timer variables
 var timeLeft = document.getElementById("timer");
 var secondsLeft = 31;
+var timerInt = 0;
 
-/* FUNCTION TO START THE QUIZ */
-function startQuiz(event) {
+//FUNCTION TO START THE QUIZ
+function startQuiz() {
     //hides the main page and shows the questions
     mainPage.style.display = "none";
     questionsPage.style.display = "block";
@@ -112,99 +111,55 @@ function startTimer() {
         if (secondsLeft <= 0) {
             clearInterval(timerInt);
             timeLeft.textContent = "Ran out of time!";
-            //gameover
+            finishGame();
 
         } else if (questionNumber >= preguntas.length + 1) {
             clearInterval(timerInt);
-            //gameover
+            finishGame();
 
         }
     }, 1000);
 }
 
-function theQuestion(n) {
-    whatQuestion.textContent = preguntas[n].question;
-    questionNumber = n;
-    answer1.textContent = preguntas[n].choices[0];
-    answer2.textContent = preguntas[n].choices[1];
-    answer3.textContent = preguntas[n].choices[2];
-    answer4.textContent = preguntas[n].choices[3];
+function theQuestion(questionNumber) {
+    whatQuestion.textContent = preguntas[questionNumber].question;
+
+    answer1.textContent = preguntas[questionNumber].choices[0];
+    answer2.textContent = preguntas[questionNumber].choices[1];
+    answer3.textContent = preguntas[questionNumber].choices[2];
+    answer4.textContent = preguntas[questionNumber].choices[3];
+
+    // correctAnswer();
+    // nextQuestion();
 
 }
 
 // //Event Listener to start the quiz
 startBtn.addEventListener("click", startQuiz);
-choicesBtn.addEventListener("click", function);
+choicesBtn.addEventListener("click", correctAnswer);
+
+//check if the answer is correct
+function correctAnswer() {
+    //wrong answer
+    if (preguntas.choices != preguntas.correct) {
+        timeLeft = secondsLeft - 10;
+
+        //correct answer
+    } else if (preguntas.choices === preguntas.correct) {
+        points = + 10;
+        console.log("Points: " + points);
+
+
+    }
+    nextQuestion();
+}
 
 /* FUNCTION TO GET/SHOW EACH QUESTION */
-for (let index = 0; index < preguntas.length; index++) {
-    var newQuestion = preguntas;
-    console.log(newQuestion);
+function nextQuestion() {
+   
 
 }
 
-// // /* FUNCTION FOR CLICKING A QUESTION */
-// function questionClick(event) {
+function finishGame() {
 
-//     // if the clicked element is not a choice button, do nothing.
-//     if (something) {
-
-//     }
-
-// //   // check if user guessed wrong
-// //     if (something) {
-// //         penalize time
-
-// //         // display new time on page
-
-// //         // give them feedback, letting them know it's wrong
-// //     } else {
-// //         // give them feedback, letting them know it's right
-// //     }
-
-//     // flash right/wrong feedback on page for a short period of time
-
-//     // move to next question
-
-//     // check if we've run out of questions
-//     // if so, end the quiz
-//     // else, get the next question
-// }
-
-// // /* FUNCTION TO END THE QUIZ */
-// // function quizEnd() {
-// //     // stop timer
-
-//     // show end screen
-
-//     // show final score
-
-//     // hide questions section
-
-
-// // /* FUNCTION FOR UPDATING THE TIME */
-// // function clockTick() {
-// //     // update time
-
-// //     // check if user ran out of time
-// // }
-
-// // function saveHighscore() {
-// //     // get value of input box - for initials
-
-// //     // make sure value wasn't empty
-// //     // get saved scores from localstorage, or if not any, set to empty array
-
-// //     // format new score object for current user
-
-// //     // save to local storage
-
-// //     // redirect to next page
-// // }
-
-// // /* CLICK EVENTS */
-// //     // user clicks button to submit initials
-
-// //     // user clicks button to start quiz
-
-// //     // user clicks on element containing choices
+}

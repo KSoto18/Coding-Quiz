@@ -1,8 +1,14 @@
+* {
+    background-color: steelblue;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 
 .main {
     display: flex;
     align-items: center;
     flex-direction: column;
+    
+    
 }
 
 .questions_page{
@@ -14,14 +20,31 @@
     display: none;
 }
 
-#start_quiz {
+.choices_btn {
+    margin: 2px;
+    border-radius: 5px;
+    border-color: indigo;
+    background-color: slateblue;
+    color: white;
 
 }
 
-#start_button {
-    
+.button {
+    margin: 2px;
+    border-radius: 5px;
+    border-color: slateblue;
+    background-color: indigo;
+    color: white;
+
 }
 
-.button{
-
+#timer {
+    position: absolute;
+    right: 50px;
 }
+
+#view {
+    position: absolute;
+    left: 50px;
+}
+
