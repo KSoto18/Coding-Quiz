@@ -27,6 +27,12 @@ SO THAT I can gauge my progress compared to my peers
 -THEN I can save my initials and my score
 ```
 
+### Demo of Apprication
+
+The following animation demonstrates the application functionality:
+
+![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./assets/demo/04-web-apis-homework-demo.gif)
+
 ### Link to Application
 
 [Coding-Quiz-Website](https://ksoto18.github.io/Coding-Quiz/)

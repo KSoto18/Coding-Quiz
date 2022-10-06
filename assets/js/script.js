@@ -84,25 +84,39 @@ var answer3 = document.getElementById("answer3");
 var answer4 = document.getElementById("answer4");
 
 var choicesBtn = document.querySelector(".choices_btn");
+var nextBtn = document.getElementById("nextbtn");
 
 //timer variables
 var timeLeft = document.getElementById("timer");
 var secondsLeft = 31;
 var timerInt = 0;
 
+finishPage.style.display = "none";
+
 //FUNCTION TO START THE QUIZ
 function startQuiz() {
     //hides the main page and shows the questions
     mainPage.style.display = "none";
+    finishPage.style.display = "none";
     questionsPage.style.display = "block";
     questionNumber = 0;
-    theQuestion(questionNumber);
+    theQuestion();
 
-    //timer function
+    //starts timer
     startTimer();
+
+    //if time runs out
+    setTimeout(function() {
+        mainPage.style.display = "none";
+        questionsPage.style.display = "none";
+        finishPage.style.display = "block";
+        
+        }, 31000);
+    
 
 }
 
+//timer function
 function startTimer() {
     var timerInt = setInterval(function () {
         secondsLeft--;
@@ -111,37 +125,36 @@ function startTimer() {
         if (secondsLeft <= 0) {
             clearInterval(timerInt);
             timeLeft.textContent = "Ran out of time!";
-            finishGame();
+            // finishGame();
 
         } else if (questionNumber >= preguntas.length + 1) {
             clearInterval(timerInt);
-            finishGame();
+            // finishGame();
 
         }
     }, 1000);
 }
 
+
 function theQuestion(questionNumber) {
-    whatQuestion.textContent = preguntas[questionNumber].question;
+    for (var i = 0; i < preguntas.length; i++) {
+        
+        whatQuestion.textContent = preguntas[i].question;
 
-    answer1.textContent = preguntas[questionNumber].choices[0];
-    answer2.textContent = preguntas[questionNumber].choices[1];
-    answer3.textContent = preguntas[questionNumber].choices[2];
-    answer4.textContent = preguntas[questionNumber].choices[3];
+        answer1.textContent = preguntas[i].choices[0];
+        answer2.textContent = preguntas[i].choices[1];
+        answer3.textContent = preguntas[i].choices[2];
+        answer4.textContent = preguntas[i].choices[3];
 
-    // correctAnswer();
-    // nextQuestion();
-
+        i = questionNumber;
+        console.log("Question: #" + i);
+    } 
 }
-
-// //Event Listener to start the quiz
-startBtn.addEventListener("click", startQuiz);
-choicesBtn.addEventListener("click", correctAnswer);
 
 //check if the answer is correct
 function correctAnswer() {
     //wrong answer
-    if (preguntas.choices != preguntas.correct) {
+    if (preguntas.choices !== preguntas.correct) {
         timeLeft = secondsLeft - 10;
 
         //correct answer
@@ -151,15 +164,13 @@ function correctAnswer() {
 
 
     }
-    nextQuestion();
 }
 
-/* FUNCTION TO GET/SHOW EACH QUESTION */
-function nextQuestion() {
-   
+//start quiz button even listener
+startBtn.addEventListener("click", startQuiz);
 
-}
+//choices event listener
+choicesBtn.addEventListener("click", correctAnswer);
 
-function finishGame() {
-
-}
+//next button event listener
+nextBtn.addEventListener("click", theQuestion);

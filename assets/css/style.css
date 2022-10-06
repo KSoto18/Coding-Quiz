@@ -1,5 +1,5 @@
 * {
-    background-color: steelblue;
+    background-color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -23,17 +23,16 @@
 .choices_btn {
     margin: 2px;
     border-radius: 5px;
-    border-color: indigo;
-    background-color: slateblue;
+    border-color: #2E0994;
+    background-color: #2E0994;
     color: white;
-
 }
 
 .button {
     margin: 2px;
     border-radius: 5px;
-    border-color: slateblue;
-    background-color: indigo;
+    border-color: #2E0994;
+    background-color: #2E0994;
     color: white;
 
 }
