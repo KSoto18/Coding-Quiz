@@ -76,14 +76,20 @@ var mainPage = document.getElementById("main_page");
 var startBtn = document.getElementById("startBtn");
 var main = document.querySelector(".main");
 
-
+//question variables
 var questionsPage = document.getElementById("questions_page");
 var whatQuestion = document.querySelector("#what_question");
-var answers = document.querySelector("#answers");
+
 var answer1 = document.getElementById("answer1");
 var answer2 = document.getElementById("answer2");
 var answer3 = document.getElementById("answer3");
 var answer4 = document.getElementById("answer4");
+
+var choicesBtn = document.querySelector(".choices_btn");
+
+//timer variables
+var timeLeft = document.getElementById("timer");
+var secondsLeft = 31;
 
 /* FUNCTION TO START THE QUIZ */
 function startQuiz(event) {
@@ -91,58 +97,53 @@ function startQuiz(event) {
     mainPage.style.display = "none";
     questionsPage.style.display = "block";
     questionNumber = 0;
-    getQuestion(questionNumber);
-    
+    theQuestion(questionNumber);
 
-// start timer
+    //timer function
+    startTimer();
 
-// show starting time
-    
 }
 
-function getQuestion(n) {
+function startTimer() {
+    var timerInt = setInterval(function () {
+        secondsLeft--;
+        timeLeft.textContent = "Time Remaining: " + secondsLeft;
+
+        if (secondsLeft <= 0) {
+            clearInterval(timerInt);
+            timeLeft.textContent = "Ran out of time!";
+            //gameover
+
+        } else if (questionNumber >= preguntas.length + 1) {
+            clearInterval(timerInt);
+            //gameover
+
+        }
+    }, 1000);
+}
+
+function theQuestion(n) {
     whatQuestion.textContent = preguntas[n].question;
-    
+    questionNumber = n;
     answer1.textContent = preguntas[n].choices[0];
     answer2.textContent = preguntas[n].choices[1];
     answer3.textContent = preguntas[n].choices[2];
     answer4.textContent = preguntas[n].choices[3];
 
-    questionNumber = n;
 }
 
-
-// //Event Listener for to start the quiz
+// //Event Listener to start the quiz
 startBtn.addEventListener("click", startQuiz);
+choicesBtn.addEventListener("click", function);
 
-// /* FUNCTION TO GET/SHOW EACH QUESTION */
-// function getQuestions() {
-//       var output = [];
-//       var awnsers;
-//     // get current question object from array
-//     for (var i=0; i <questions.length; i++) {
-//         console.log(questions);
-//         awnsers = [];
-//     }
+/* FUNCTION TO GET/SHOW EACH QUESTION */
+for (let index = 0; index < preguntas.length; index++) {
+    var newQuestion = preguntas;
+    console.log(newQuestion);
 
-//     // update title with current question
+}
 
-//     // clear out ant old question choices
-
-//     // loop over choices
-//       for (let index = 0; index < questions[currentQuestion].choices.length; index++) {
-//         const element = array[index];
-
-//     // create new button for each choice
-//         var btn = document.createElement("button")
-
-//     // display on the page
-//         btn.textContent = questions[currentQuestion].choice[index]
-//         document.getElementById("choices").appendChild(btn)
-//         }
-// }
-
-// /* FUNCTION FOR CLICKING A QUESTION */
+// // /* FUNCTION FOR CLICKING A QUESTION */
 // function questionClick(event) {
 
 //     // if the clicked element is not a choice button, do nothing.
@@ -150,16 +151,16 @@ startBtn.addEventListener("click", startQuiz);
 
 //     }
 
-//     // check if user guessed wrong
-//     if (something) {
-//         // penalize time
+// //   // check if user guessed wrong
+// //     if (something) {
+// //         penalize time
 
-//         // display new time on page
+// //         // display new time on page
 
-//         // give them feedback, letting them know it's wrong
-//     } else {
-//         // give them feedback, letting them know it's right
-//     }
+// //         // give them feedback, letting them know it's wrong
+// //     } else {
+// //         // give them feedback, letting them know it's right
+// //     }
 
 //     // flash right/wrong feedback on page for a short period of time
 
@@ -170,40 +171,40 @@ startBtn.addEventListener("click", startQuiz);
 //     // else, get the next question
 // }
 
-// /* FUNCTION TO END THE QUIZ */
-// function quizEnd() {
-//     // stop timer
+// // /* FUNCTION TO END THE QUIZ */
+// // function quizEnd() {
+// //     // stop timer
 
 //     // show end screen
 
 //     // show final score
 
 //     // hide questions section
-// }
 
-// /* FUNCTION FOR UPDATING THE TIME */
-// function clockTick() {
-//     // update time
 
-//     // check if user ran out of time
-// }
+// // /* FUNCTION FOR UPDATING THE TIME */
+// // function clockTick() {
+// //     // update time
 
-// function saveHighscore() {
-//     // get value of input box - for initials
+// //     // check if user ran out of time
+// // }
 
-//     // make sure value wasn't empty
-//     // get saved scores from localstorage, or if not any, set to empty array
+// // function saveHighscore() {
+// //     // get value of input box - for initials
 
-//     // format new score object for current user
+// //     // make sure value wasn't empty
+// //     // get saved scores from localstorage, or if not any, set to empty array
 
-//     // save to local storage
+// //     // format new score object for current user
 
-//     // redirect to next page
-// }
+// //     // save to local storage
 
-// /* CLICK EVENTS */
-//     // user clicks button to submit initials
+// //     // redirect to next page
+// // }
 
-//     // user clicks button to start quiz
+// // /* CLICK EVENTS */
+// //     // user clicks button to submit initials
 
-//     // user clicks on element containing choices
+// //     // user clicks button to start quiz
+
+// //     // user clicks on element containing choices
